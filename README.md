@@ -1,2 +1,2 @@
 # netdevops-gns3
-Testing Network Automation Frameworks on GNS3
+Testing of Networking Automation Frameworks using GNS3 and its API.
