@@ -10,8 +10,6 @@ from nornir_jinja2.plugins.tasks import template_file
 from constants import LOGGING_DICT
 
 
-#COMMANDS = ["show version", "show ip int br", "show memory statistics", "show arp", "show ip route", "show interfaces"]
-
 def configure(task, load_data: bool = False) -> None:
     if load_data:
         data = task.run(task=load_yaml, file=f"inventory/host_vars/{task.host.name}.yaml").result
@@ -27,8 +25,6 @@ def main():
     logging.config.dictConfig(LOGGING_DICT)
     with InitNornir(config_file="config.yaml") as nr:
         nr = InitNornir(config_file="config.yaml")
-        #nr_sw1 = nr.filter(F(has_parent_group="Switch1"))
-        #nr_sw1.run(task=gather_commands, commands=COMMANDS)
         nr.run(task=configure, load_data=False)
     
 if __name__ == '__main__':
