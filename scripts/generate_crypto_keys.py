@@ -21,7 +21,6 @@ def is_ssh_enabled(conn: BaseConnection, device_name: str) -> bool:
     else:
         return False
     
-
 @utils.retry((NetMikoTimeoutException, OSError, ValueError), max_retries=2)
 def generate_crypto_key(device: Device):
     params = {
