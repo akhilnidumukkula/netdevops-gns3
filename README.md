@@ -1,2 +1,2 @@
 # netdevops-performance
-Testing of Networking Automation Frameworks using GNS3 and its API.
+Testing performance of Networking Automation Frameworks using GNS3 and its API.
