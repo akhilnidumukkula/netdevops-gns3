@@ -25,13 +25,7 @@ async def main():
     router_config_template = jinja_env.get_template(ROUTER_CONFIG_TEMPLATE)
     gns3_project = await GNS3Project.fetch_from_id(PROJECT_ID)
     
-    # TODO: Add asynccontextmanager!
-    # for i in range(100, 110):
-    #     await gns3_project.provision_router(devices[i], template=router_config_template)
-    
     await gns3_project.add_routers(devices=devices, template=router_config_template)
-    # await gns3_project.start_all_nodes()
-    
         
 if __name__ == "__main__":
     logging.config.dictConfig(LOGGING_DICT)
