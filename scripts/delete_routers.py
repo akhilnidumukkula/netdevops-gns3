@@ -22,7 +22,6 @@ async def main():
             node_id = link.first_port.node_id
             await gns3_project.delete_node(node_id=node_id)
             
-    
 if __name__ == '__main__':
     logging.config.dictConfig(LOGGING_DICT)
     asyncio.run(main())
