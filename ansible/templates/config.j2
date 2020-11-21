@@ -1,0 +1,6 @@
+no ip access-list TEST
+ip access-list extended TEST
+ permit icmp host {{ ansible_host }} any
+ permit tcp host {{ ansible_host }} any 
+ deny ip any any
+banner motd ^TESTING ANSIBLE PERFORMANCE on {{ inventory_hostname }} - {% if random is defined %} {{ random[0] }} {% endif %}^

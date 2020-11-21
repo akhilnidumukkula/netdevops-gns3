@@ -1,0 +1,24 @@
+default-lease-time 600;
+max-lease-time 7200;
+ddns-update-style none;
+
+option domain-name "{{ domain_name }}";
+option domain-name-servers {{ dns_servers|join(", ")}};
+
+subnet {{ ens_network }} netmask {{ ens_net_mask }} {
+}
+
+{% for device in devices %}
+class "{{ device.hostname }}" {
+	match if ( option host-name = "{{ device.hostname }}");
+}{% endfor %}
+
+{% for network, sorted_devices in networks_with_devices %}
+subnet {{ network.network_address }} netmask {{ network.netmask }} {
+  option routers {{ network.hosts() | list | last }};
+  {%- for device in sorted_devices %}
+  pool {
+    allow members of "{{ device.hostname }}";
+    range {{ device.mgmt_int.ip }} {{ device.mgmt_int.ip }};
+  }{% endfor %}
+}{% endfor %}

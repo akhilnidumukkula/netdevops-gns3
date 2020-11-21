@@ -1,0 +1,6 @@
+no ip access-list TEST
+ip access-list extended TEST
+ permit icmp host {{ host.hostname }} any
+ permit tcp host {{ host.hostname }} any 
+ deny ip any any
+banner motd ^TESTING NORNIR PERFORMANCE on {{ host.name }} - {% if random_data %} {{ random_data }} {% endif %}^

@@ -1,0 +1,9 @@
+---
+    - name: Configure routers
+      gather_facts: no
+      hosts: all
+      tasks:
+        - name: Configure router from template
+          cli_config:
+            config: "{{ lookup('template', 'config.j2') }}"
+            diff_match: none
