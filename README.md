@@ -8,3 +8,6 @@ Topology Overview : Basic_topology.png
 3. Run Ansible playbooks (fetching command outputs, configuring acl & banner) and time them.
 4. Run Asyncio scripts using python (fetching command outputs, configuring acl & banner) and time them.
 5. Run Nornir scripts using python (fetching command outputs, configuring acl & banner) and time them.
+
+Additional:
+- Run ISC DHCP Server in the Automation VM to assign IP addresses to the routers based on the their hostname (DHCP Option 12)
